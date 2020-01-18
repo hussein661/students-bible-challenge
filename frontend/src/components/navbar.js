@@ -42,12 +42,12 @@ class Navbar extends Component {
   render() {
     return (
       <div className="top-nav">
-        <nav className="navbar navbar-expand-lg">
-          <a className="navbar-brand" href="#">
-            QUESTIONARE
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="#">
+            BIBLE CHALLENGE
           </a>
           <button
-            className="navbar-toggler"
+            class="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -55,8 +55,9 @@ class Navbar extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon" />
+            <span class="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
@@ -107,7 +108,7 @@ class Navbar extends Component {
               </li>
               {this.log()}
             </ul>
-            <form className="form-inline my-2 my-lg-0">
+            {/* <form className="form-inline my-2 my-lg-0">
               <input
                 className="form-control mr-sm-2"
                 type="search"
@@ -120,7 +121,7 @@ class Navbar extends Component {
               >
                 Search
               </button>
-            </form>
+            </form> */}
           </div>
         </nav>
       </div>

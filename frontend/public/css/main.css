@@ -22,7 +22,7 @@ h2 {
 }
 
 a {
-  color: black;
+  color: black !important;
 }
 /* STRUCTURE */
 
