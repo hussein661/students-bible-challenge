@@ -18,7 +18,6 @@ class Login extends Component {
     e.preventDefault();
     this.state.errorMessage = null;
     const { email, password } = this.state;
-    const url = "http://localhost:5000/users/login";
     if (email.length && password.length) {
       request("post", "/users/login", {
         email,
