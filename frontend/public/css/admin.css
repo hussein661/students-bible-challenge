@@ -1,0 +1,68 @@
+.horizontal-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.list-item {
+  display: block;
+  float: left;
+  cursor: pointer;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+.container {
+  margin-top: 5%;
+}
+
+.form-container,
+nav {
+  padding: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  border-radius: 5%;
+}
+
+body {
+  /* background-image: url("https://thumbs.dreamstime.com/b/christian-cross-appears-bright-sky-christian-cross-appears-bright-sky-background-151702787.jpg"),
+    linear-gradient(to right, rgba(200, 32, 2, 0.5), rgba(202, 3, 34, 0.5)); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+}
+
+.choice {
+  color: black !important;
+  font-weight: bolder !important;
+  font-size: 21px;
+}
+
+.form-group {
+  color: #0d0d0d;
+  font-weight: bold;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  margin-bottom: 2vmin;
+  padding: 25px;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.form-group-admin input,
+.form-group-admin textarea,
+.form-group-admin select {
+  margin-bottom: 3vmin;
+  padding: 5px;
+  font-size: 20px;
+  height: 60px;
+}
+
+.score-field {
+  height: 60px;
+}
