@@ -6,6 +6,7 @@ const cors = require("cors");
 const questionRouter = require("./routers/question");
 const userRouter = require("./routers/user");
 const answerRouter = require("./routers/answer");
+const schoolRouter = require("./routers/school");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use(userRouter);
 app.use(questionRouter);
 app.use(answerRouter);
+app.use(schoolRouter);
 
 app.listen(port, () => {
   console.log("Server is up on port " + port);

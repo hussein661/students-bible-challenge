@@ -54,6 +54,14 @@ const userSchema = new mongoose.Schema(
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    level_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Level"
+    },
+    school_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "School"
     }
   },
   {

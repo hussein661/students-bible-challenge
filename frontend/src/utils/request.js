@@ -9,7 +9,6 @@ Axios.defaults.headers.common["Access-Control-Allow-Credentials"] = true;
 Axios.defaults.headers.common["Access-Control-Allow-Origin"] = true;
 
 const request = (type, url, body) => {
-  console.log(API_URL);
   return Axios({
     method: type,
     url: API_URL + url,

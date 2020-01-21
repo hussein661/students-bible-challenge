@@ -11,10 +11,13 @@ class Home extends Component {
     message: "",
     selectedAnswerId: null,
     answerScore: 0,
-    user: { name: "" }
+    user: { name: "", school_id: { name: "" } },
+    answersCount: 0,
+    questionsCount: 0
   };
   componentDidMount() {
     this.getUser();
+    this.getCounts();
     request("get", "/todayQuestion")
       .then(r => {
         if (!r.data.question) {
@@ -58,6 +61,17 @@ class Home extends Component {
   handleSelectAnswer = (event, selectedAnswerId, answerScore) => {
     this.setState({ selectedAnswerId, answerScore: parseInt(answerScore) });
   };
+
+  getCounts() {
+    request("get", "/answerStats")
+      .then(res => {
+        const { answersCount, questionsCount } = res.data;
+        this.setState({ answersCount, questionsCount });
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
+  }
 
   submitAnswer = e => {
     e.preventDefault();
@@ -143,16 +157,21 @@ class Home extends Component {
   };
 
   render() {
-    const { user } = this.state;
     return (
       <div>
         <div className="container">
           <div className="grid">
             <div className="left-side">
-              {" "}
               <div className="header-2">
-                <h2 className="title">welcome {user.name}</h2>
-                <div className="level">Intermediate</div>
+                <h2>My Profile</h2>
+                <p>Name : {this.state.user.name}</p>
+                <p>Level : beginner</p>
+                <p>
+                  Questions Answered : {this.state.answersCount} out of{" "}
+                  {this.state.questionsCount}
+                </p>
+                {/* <span>you have questions you didnt answer yet</span> */}
+                <p>School : {this.state.user.school_id.name}</p>
               </div>
             </div>
 

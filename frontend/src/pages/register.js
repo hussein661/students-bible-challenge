@@ -9,18 +9,9 @@ class Register extends Component {
       email: "",
       password: "",
       school_id: "",
-      level: ""
+      level: 1
     },
-    schools: [
-      {
-        id: 1,
-        name: "akks"
-      },
-      {
-        id: 2,
-        name: "saggesse"
-      }
-    ],
+    schools: [],
     grades: [
       {
         name: 10,
@@ -42,6 +33,16 @@ class Register extends Component {
     user[e.target.name] = e.target.value;
     this.setState({ user });
   };
+
+  componentDidMount() {
+    this.getSchools();
+  }
+  getSchools() {
+    request("get", "/getAllSchools").then(res => {
+      console.log(res);
+      this.setState({ schools: res.data.schools });
+    });
+  }
 
   createUser = e => {
     e.preventDefault();
@@ -106,11 +107,12 @@ class Register extends Component {
                 <select
                   className="form-control"
                   name="school_id"
+                  value={this.state.user.school_id}
                   onChange={this.handleChange}
                 >
                   {this.state.schools.map(school => {
                     return (
-                      <option value={school.id} key={school.id}>
+                      <option value={school._id} key={school._id}>
                         {school.name}
                       </option>
                     );
@@ -120,6 +122,7 @@ class Register extends Component {
                   <select
                     className="form-control"
                     name="level"
+                    value={this.state.user.level}
                     onChange={this.handleChange}
                   >
                     {this.state.grades.map(grade => {

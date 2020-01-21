@@ -1,5 +1,7 @@
 const express = require("express");
 const UserAnswer = require("../models/UserAnswer");
+const Question = require("../models/Question");
+
 const auth = require("../middleware/auth");
 const router = new express.Router();
 
@@ -17,10 +19,21 @@ router.get("/myanswers", auth, async (req, res) => {
         date: answer.createdAt
       });
     });
-    console.log(myanswers);
     res.send({ myanswers });
   } catch (e) {
     res.status(400).json({ error: e.message });
+  }
+});
+
+router.get("/answerStats", auth, async (req, res) => {
+  try {
+    const questionsCount = await Question.countDocuments();
+    const answersCount = await UserAnswer.find({
+      user_id: req.user.id
+    }).countDocuments();
+    res.send({ answersCount, questionsCount });
+  } catch (e) {
+    console.log(e);
   }
 });
 
