@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import intl from "react-intl-universal";
+
 class Navbar extends Component {
   logout = e => {
     localStorage.clear();
@@ -44,7 +46,7 @@ class Navbar extends Component {
       <div className="top-nav">
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" href="#">
-            BIBLE CHALLENGE
+            {intl.get("BIBLE_CHALLENGE")}
           </a>
           <button
             class="navbar-toggler"
@@ -63,21 +65,23 @@ class Navbar extends Component {
               <li className="nav-item active">
                 <Link to="/">
                   <a className="nav-link" href="#">
-                    Lastest Question <span className="sr-only">(current)</span>
+                    {intl.get("LATEST_QUESTION")}{" "}
+                    <span className="sr-only">(current)</span>
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/my_answers">
                   <a className="nav-link" href="#">
-                    My answers
+                    {intl.get("MY_ANSWERS")}
                   </a>
                 </Link>
               </li>
               <li className="nav-item active">
                 <Link to="/questions">
                   <a className="nav-link" href="#">
-                    see old questions <span className="sr-only">(current)</span>
+                    {intl.get("SEE_OLD_QUESTIONS")}{" "}
+                    <span className="sr-only">(current)</span>
                   </a>
                 </Link>
               </li>

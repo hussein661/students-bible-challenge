@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Routes from "./Routes";
+import App from "./App";
 
-const App = () => <Routes />;
+// const App = () => <Routes />;
 
 ReactDOM.render(<App />, document.getElementById("root"));

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import request from "../utils/request";
 import Feedback from "../components/feedback";
+import intl from "react-intl-universal";
 
 class Home extends Component {
   state = {
@@ -142,7 +143,7 @@ class Home extends Component {
             className="btn btn-primary pull-right"
             disabled={this.state.disabled}
           >
-            Submit Answer
+            {intl.get("SUBMIT_ANSWER") || "Submit Answer"}
           </button>
         </form>
       </div>
@@ -163,15 +164,17 @@ class Home extends Component {
           <div className="grid">
             <div className="left-side">
               <div className="header-2">
-                <h2>My Profile</h2>
-                <p>Name : {this.state.user.name}</p>
-                <p>Level : beginner</p>
+                <h2>{intl.get("MY_PROFILE") || "My profile"}</h2>
                 <p>
-                  Questions Answered : {this.state.answersCount} out of{" "}
-                  {this.state.questionsCount}
+                  {intl.get("NAME")} : {this.state.user.name}
+                </p>
+                <p>{intl.get("LEVEL") || "Level"}: beginner</p>
+                <p>
+                  {intl.get("ANSWERED_QUESTIONS")} : {this.state.answersCount}{" "}
+                  out of {this.state.questionsCount}
                 </p>
                 {/* <span>you have questions you didnt answer yet</span> */}
-                <p>School : {this.state.user.school_id.name}</p>
+                {/* <p>School : {this.state.user.school_id.name}</p> */}
               </div>
             </div>
 
