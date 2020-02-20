@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import request from "../utils/request";
 import moment from "moment";
-
+import intl from "react-intl-universal";
 class AllQuestions extends Component {
   state = {
     questions: []
@@ -20,8 +20,8 @@ class AllQuestions extends Component {
       <div className="wrapper">
         <table className="table responsive table-hover">
           <tr className="thead">
-            <td>question</td>
-            <td>created on</td>
+            <td>{intl.get("QUESTION")}</td>
+            <td>{intl.get("CREATED_ON")}</td>
           </tr>
           {questions.map(question => {
             return (

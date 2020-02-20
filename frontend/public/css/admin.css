@@ -47,20 +47,10 @@ body {
 }
 .form-group input,
 .form-group textarea,
-.form-group select {
+.form-group {
   margin-bottom: 2vmin;
-  padding: 25px;
   border-radius: 20px;
   font-size: 20px;
-}
-
-.form-group-admin input,
-.form-group-admin textarea,
-.form-group-admin select {
-  margin-bottom: 3vmin;
-  padding: 5px;
-  font-size: 20px;
-  height: 60px;
 }
 
 .score-field {

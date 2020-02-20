@@ -25,4 +25,15 @@ router.post("/addSchool", auth, async (req, res) => {
   }
 });
 
+router.post("/deleteSchool", auth, async (req, res) => {
+  try {
+    const { id } = req.body;
+    console.log(req.body);
+    await School.findOneAndDelete({ _id: id });
+    res.send("deleted");
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
 module.exports = router;

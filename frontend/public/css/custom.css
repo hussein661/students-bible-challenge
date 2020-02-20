@@ -78,24 +78,29 @@ h5 {
 }
 
 .top-nav {
-  border-bottom: 2px solid black;
-  border-top: 2px solid black;
+  border-bottom: 2px solid orangered;
+  border-top: 2px solid orangered;
   padding: 0px;
 }
-.top-nav li {
-  font-weight: bold !important;
-  margin: 0em;
+.top-nav li,
+.top-nav a {
+  font-size: 21px;
+  font-weight: 500;
+  border-radius: 25px !important;
+  color: black !important;
+  height: 100%;
+  margin: 0 !important;
+  text-decoration: none;
 }
 .top-nav a:hover,
 .top-nav li:hover {
-  background: black;
+  background: orangered;
   color: white !important;
-  text-decoration: none;
 }
 
-.navbar-brand,
-.navbar-brand:hover {
+.navbar-brand {
   color: orangered !important;
   font-weight: bold;
   font-size: 2.5vmin;
+  text-transform: uppercase;
 }

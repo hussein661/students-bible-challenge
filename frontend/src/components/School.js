@@ -3,13 +3,33 @@ import request from "../utils/request";
 
 class School extends Component {
   state = {
-    name: ""
+    name: "",
+    schools: []
   };
   submit = () => {
     request("post", "/addSchool", { name: this.state.name }).then(res => {
-      console.log(res);
+      this.setState({
+        schools: [...this.state.schools, { id: "", name: this.state.name }]
+      });
+      this.setState({ name: "" });
     });
   };
+  componentDidMount() {
+    request("get", "/getAllSchools").then(res => {
+      this.setState({ schools: res.data.schools });
+    });
+  }
+
+  removeSchool(id) {
+    if (window.confirm("Are you sure ?")) {
+      request("post", "/deleteSchool", { id }).then(res => {
+        // alert("deleteing  " + id);
+        const schools = this.state.schools.filter(school => school._id !== id);
+        this.setState({ schools });
+      });
+    }
+  }
+
   render() {
     return (
       <div className="container">
@@ -21,18 +41,21 @@ class School extends Component {
                 type="name"
                 name="name"
                 className="form-control"
-                onChange={this.handleChange}
+                onChange={e => this.setState({ name: e.target.value })}
               />
             </div>
-            {/* <div className="form-group">
-              <select
-                placeholder="Education"
-                type="name"
-                name="name"
-                className="form-control"
-                onChange={this.handleChange}
-              />
-            </div> */}
+            <ul>
+              {this.state.schools.map(school => {
+                return (
+                  <li key={school._id}>
+                    <div className="d-flex justify-content-between">
+                      <div>{school.name}</div>
+                      <a onClick={() => this.removeSchool(school._id)}>X</a>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
             <button onClick={this.submit}>Add school</button>
           </div>
         </div>

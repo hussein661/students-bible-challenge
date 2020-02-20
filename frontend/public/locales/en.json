@@ -1,0 +1,23 @@
+{
+  "BIBLE_COMPETITION": "The Bible Competition",
+  "MY_PROFILE": "My profile",
+  "LATEST_QUESTION": "Latest question",
+  "MY_'ANSWERS": "My answers",
+  "SEE_OLD_QUESTIONS": "Old questions",
+  "LOGOUT": "Logout",
+  "NAME": "Name",
+  "LEVEL": "Level",
+  "QUESTIONS_ANSWERED": "Answered questions",
+  "QUESTION": "Question",
+  "ANSWER": "Answer",
+  "CREATED_ON": "Date",
+
+  "THERE_IS_NO_QUESTION": "There is no question for today just yet.",
+  "PLEASE_SELECT": "please select an answer for this question",
+  "ANSWERED_SUCCESSFULLY": "You have successfully answered this question",
+  "THANKS_FOR_ANSWER": "Thank you, your answer submitted successfully",
+  "SUBMIT_ANSWER": "Submit Answer",
+  "LOGIN": "Login",
+  "LOGIN_TO_CONTINUE": "Login to continue",
+  "CREATE_NEW_ACCOUNT": "Create new account"
+}

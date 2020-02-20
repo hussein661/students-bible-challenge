@@ -23,7 +23,7 @@ class Home extends Component {
       .then(r => {
         if (!r.data.question) {
           return this.setState({
-            message: "there is no question for today just yet"
+            message: intl.get("THERE_IS_NO_QUESTION")
           });
         }
         const question = r.data;
@@ -35,13 +35,13 @@ class Home extends Component {
             console.log(r);
             if (r.data === false) {
               return this.setState({
-                message: "please select an answer for this question"
+                message: intl.get("PLEASE_SELECT")
               });
             }
             this.setState({
               selectedAnswerId: r.data.answer_id,
               disabled: true,
-              message: "You have successfully answered this question"
+              message: intl.get("ANSWERED_SUCCESSFULLY")
             });
           })
           .catch(e => {
@@ -55,7 +55,7 @@ class Home extends Component {
 
   getUser = () => {
     request("get", "/users/me").then(r => {
-      this.setState({ user: r.data });
+      setTimeout(this.setState({ user: r.data }), 1000);
     });
   };
 
@@ -86,11 +86,10 @@ class Home extends Component {
     })
       .then(r => {
         this.setState({
-          message: "Thank you, your answer submitted successfully"
+          message: intl.get("THANKS_FOR_ANSWER")
         });
       })
       .catch(e => {
-        alert();
         this.setState({ message: e.message });
       });
   };

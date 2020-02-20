@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import intl from "react-intl-universal";
 import { Link } from "react-router-dom";
 import request from "../utils/request";
 import Feedback from "../components/feedback";
@@ -46,7 +46,7 @@ class Login extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 form-container">
-            <h1>Login to continue</h1>
+            <h1>{intl.get("LOGIN_TO_CONTINUE")}</h1>
             <form onSubmit={this.onSubmit}>
               {this.error()}
               <div className="form-group">
@@ -75,7 +75,7 @@ class Login extends Component {
               </div>
               <div>
                 <Link to="/register">
-                  <a href="#">create new account</a>
+                  <a href="#">{intl.get("CREATE_NEW_ACCOUNT")}</a>
                 </Link>
               </div>
             </form>

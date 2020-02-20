@@ -1,5 +1,5 @@
 {
-  "BIBLE_CHALLENGE": "مسابقة الكتاب المقدس",
+  "BIBLE_COMPETITION": "مسابقة الكتاب المقدس",
   "MY_PROFILE": "حسابي",
   "LATEST_QUESTION": "السؤال الاخير",
   "MY_'ANSWERS": "اجاباتي",
@@ -11,5 +11,12 @@
   "QUESTION": "السؤال",
   "ANSWER": "الاجابة",
   "CREATED_ON": "التاريج",
-  "THERE_IS_NO_QUESTION": "لم يسجل سؤال جديد لهذا اليوم حتى الان"
+  "THERE_IS_NO_QUESTION": "لم يسجل سؤال جديد لهذا اليوم حتى الان",
+  "PLEASE_SELECT": "اختر اجابة واحدة لهذا السؤال",
+  "ANSWERED_SUCCESSFULLY": "لقد تمت الاجابة عن هذا السؤال",
+  "THANKS_FOR_ANSWER": "شكرا لك, لقد اجبت على هذا السؤال",
+  "SUBMIT_ANSWER": "اضغط للاجابة",
+  "LOGIN": "تسجيل الدخول",
+  "LOGIN_TO_CONTINUE": "سجل الدخول للمتابعة",
+  "CREATE_NEW_ACCOUNT": "انشاء حساب جديد"
 }

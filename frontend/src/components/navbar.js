@@ -4,9 +4,14 @@ import intl from "react-intl-universal";
 
 class Navbar extends Component {
   logout = e => {
+    const lang = localStorage.getItem("lang");
     localStorage.clear();
+    localStorage.setItem("lang", lang);
   };
-
+  changeLanguage(e) {
+    localStorage.setItem("lang", e.target.value);
+    window.location.reload();
+  }
   log = () => {
     return (
       <>
@@ -20,7 +25,7 @@ class Navbar extends Component {
                 onClick={this.logout}
                 aria-disabled="true"
               >
-                Logout
+                {intl.get("LOGOUT")}
               </a>
             </Link>
           </li>
@@ -33,7 +38,7 @@ class Navbar extends Component {
                 tabIndex={-1}
                 aria-disabled="true"
               >
-                Login
+                {intl.get("LOGIN")}
               </a>
             </Link>
           </li>
@@ -45,9 +50,9 @@ class Navbar extends Component {
     return (
       <div className="top-nav">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="#">
-            {intl.get("BIBLE_CHALLENGE")}
-          </a>
+          <div class="navbar-brand" href="#">
+            {intl.get("BIBLE_COMPETITION")}
+          </div>
           <button
             class="navbar-toggler"
             type="button"
@@ -85,32 +90,17 @@ class Navbar extends Component {
                   </a>
                 </Link>
               </li>
-              <li className="nav-item dropdown">
-                {/* <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a> */}
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                  <div className="dropdown-divider" />
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </div>
-              </li>
               {this.log()}
+              <div className="form-group">
+                <select
+                  className="form-control"
+                  onChange={this.changeLanguage}
+                  value={localStorage.getItem("lang") === "ar" ? "ar" : "en"}
+                >
+                  <option value="en">English</option>
+                  <option value="ar">العربية</option>
+                </select>
+              </div>
             </ul>
             {/* <form className="form-inline my-2 my-lg-0">
               <input

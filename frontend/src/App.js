@@ -14,7 +14,7 @@ class App extends React.Component {
       cookieLocaleKey: "lang"
     });
 
-    const lang = "ar" || localStorage.getItem("lang") || "ar";
+    const lang = localStorage.getItem("lang") === "ar" ? "ar" : "en";
     const url = `${window.location.origin}/locales/${lang}.json`;
     if (lang === "ar") {
       document.body.style.direction = "rtl";
@@ -38,7 +38,7 @@ class App extends React.Component {
         // After loading CLDR locale data, start to render
         this.setState({ initDone: true });
       })
-      .catch(err => alert(err));
+      .catch(err => console.log(err));
   }
   render() {
     return (
