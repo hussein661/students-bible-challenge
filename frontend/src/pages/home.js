@@ -5,6 +5,9 @@ import intl from "react-intl-universal";
 
 class Home extends Component {
   state = {
+    name:'',
+    loading:true,
+    user: { name: "", school_id: { name: "" } },
     question: {
       question: {},
       answers: [{}]
@@ -12,7 +15,6 @@ class Home extends Component {
     message: "",
     selectedAnswerId: null,
     answerScore: 0,
-    user: { name: "", school_id: { name: "" } },
     answersCount: 0,
     questionsCount: 0
   };
@@ -32,7 +34,6 @@ class Home extends Component {
           question_id: question.question._id
         })
           .then(r => {
-            console.log(r);
             if (r.data === false) {
               return this.setState({
                 message: intl.get("PLEASE_SELECT")
@@ -55,8 +56,11 @@ class Home extends Component {
 
   getUser = () => {
     request("get", "/users/me").then(r => {
-      setTimeout(this.setState({ user: r.data }), 1000);
-    });
+      this.setState({ user: r.data,loading:false,name:r.data.name })
+    }).catch(err=>{
+      this.setState({loading:false})
+      console.log(err)
+    })
   };
 
   handleSelectAnswer = (event, selectedAnswerId, answerScore) => {
@@ -157,31 +161,36 @@ class Home extends Component {
   };
 
   render() {
+    if(this.state.loading){
+      return <h1>loading...</h1>
+    }
     return (
       <div>
         <div className="container">
           <div className="grid">
             <div className="left-side">
               <div className="header-2">
-                <h2>{intl.get("MY_PROFILE") || "My profile"}</h2>
-                <p>
-                  {intl.get("NAME")} : {this.state.user.name}
-                </p>
-                <p>{intl.get("LEVEL") || "Level"}: beginner</p>
-                <p>
-                  {intl.get("ANSWERED_QUESTIONS")} : {this.state.answersCount}{" "}
-                  out of {this.state.questionsCount}
-                </p>
+      
+              </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{this.state.name}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{intl.get("LEVEL") || "Level"}: beginner</h6>
+                <p class="card-text text-orange">{intl.get("ANSWERED_QUESTIONS")} : {this.state.answersCount}{" "}
+                  out of {this.state.questionsCount}</p>
                 {/* <span>you have questions you didnt answer yet</span> */}
                 {/* <p>School : {this.state.user.school_id.name}</p> */}
+                {/* <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a> */}
               </div>
+            </div>
             </div>
 
             <div className="content test">
               <div className="top">{this.message()}</div>
               <div className="question">{this.question()}</div>
             </div>
-            <div className="right-side">right side</div>
+            {/* <div className="right-side">right side</div> */}
           </div>
         </div>
       </div>

@@ -93,13 +93,16 @@ class addquestion extends Component {
                   <textarea
                     className="form-control question-field"
                     name="answerText"
-                    rows={3}
+                    placeholder={`Answer ${idx + 1}`}
+                    rows={1}
                     onChange={e => this.handleChange(e, idx)}
                   />
-                  <textarea
-                    rows={3}
+                  <input 
+                   type="number"
+                   placeholder={`Score ${idx + 1}`}
+                   rows={1}
                     name="answerScore"
-                    className="form-group  score-field"
+                    className="form-control  score-field"
                     onChange={e => this.handleChange(e, idx)}
                   />
                 </div>

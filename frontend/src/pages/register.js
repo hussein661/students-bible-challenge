@@ -105,7 +105,8 @@ class Register extends Component {
               </div>
               <div className="form-group">
                 <select
-                  className="form-control"
+                 style={{borderRadius:"20px"}}
+                  className="form-control rounded-select"
                   name="school_id"
                   value={this.state.user.school_id}
                   onChange={this.handleChange}
@@ -120,6 +121,8 @@ class Register extends Component {
                 </select>
                 <div className="form-group">
                   <select
+                 style={{borderRadius:"20px"}}
+
                     className="form-control"
                     name="level"
                     value={this.state.user.level}

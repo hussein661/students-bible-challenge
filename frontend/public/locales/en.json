@@ -19,5 +19,6 @@
   "SUBMIT_ANSWER": "Submit Answer",
   "LOGIN": "Login",
   "LOGIN_TO_CONTINUE": "Login to continue",
-  "CREATE_NEW_ACCOUNT": "Create new account"
+  "CREATE_NEW_ACCOUNT": "Create new account",
+  "ANSWERED_QUESTIONS":"Answered Questions"
 }

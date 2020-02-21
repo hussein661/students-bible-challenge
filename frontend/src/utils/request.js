@@ -9,6 +9,9 @@ Axios.defaults.headers.common["Access-Control-Allow-Credentials"] = true;
 Axios.defaults.headers.common["Access-Control-Allow-Origin"] = true;
 
 const request = (type, url, body) => {
+  if(!API_TOKEN){
+    return
+  }
   return Axios({
     method: type,
     url: API_URL + url,
@@ -17,7 +20,9 @@ const request = (type, url, body) => {
     }
   })
     .then(r => {
-      return r;
+      if(r.data){
+        return r;
+      }
     })
     .catch(e => {
       console.log(e.message);

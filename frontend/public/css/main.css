@@ -274,9 +274,7 @@ input[type="text"]:placeholder {
 #icon {
   width: 60%;
 }
-body {
-  padding-top: 30px;
-}
+
 
 .test > .title {
   text-decoration: underline;
@@ -384,9 +382,6 @@ body {
 }
 .test #feedback .body .thumbs input:checked + label[for="thumbs-down"] {
   background: #f66;
-}
-.test #feedback .body .comments {
-  margin-top: 5px;
 }
 
 .answer-details {

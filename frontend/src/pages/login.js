@@ -15,6 +15,7 @@ class Login extends Component {
   };
 
   onSubmit = e => {
+    this.state.loading = true
     e.preventDefault();
     this.state.errorMessage = null;
     const { email, password } = this.state;
@@ -24,8 +25,13 @@ class Login extends Component {
         password
       })
         .then(r => {
+          console.log(r
+            )
           localStorage.setItem("API_TOKEN", r.data.token);
-          this.props.history.push("/");
+          setTimeout(() => {
+            this.state.loading = false
+            this.props.history.push("/");
+          }, 200);
         })
         .catch(e => {
           this.setState({

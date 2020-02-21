@@ -13,9 +13,6 @@
   padding: 16px;
   text-decoration: none;
 }
-.container {
-  margin-top: 5%;
-}
 
 .form-container,
 nav {
@@ -26,8 +23,7 @@ nav {
 }
 
 body {
-  /* background-image: url("https://thumbs.dreamstime.com/b/christian-cross-appears-bright-sky-christian-cross-appears-bright-sky-background-151702787.jpg"),
-    linear-gradient(to right, rgba(200, 32, 2, 0.5), rgba(202, 3, 34, 0.5)); */
+  /* background-image: url("https://images.pexels.com/photos/1343325/pexels-photo-1343325.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -47,12 +43,25 @@ body {
 }
 .form-group input,
 .form-group textarea,
-.form-group {
+.form-group,
+.rounded-select {
   margin-bottom: 2vmin;
   border-radius: 20px;
   font-size: 20px;
 }
 
 .score-field {
-  height: 60px;
+  min-height: 60px;
+  max-width: 150px;
 }
+
+.container form {
+  border: 2px solid
+  orangered;
+  
+  padding: 40px;
+  
+  border-radius: 10px;
+  background: #0c2cd50f;
+  box-shadow: 1px 1px 1px
+  gray;}

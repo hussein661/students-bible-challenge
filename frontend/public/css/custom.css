@@ -23,7 +23,6 @@ html,
 .container-fluid,
 .wrapper {
   margin: 0 auto !important;
-  max-width: 850px;
 }
 
 h1,
@@ -46,8 +45,6 @@ h5 {
   width: 100%;
   text-align: center;
   color: orangered;
-  border: 1px solid orangered;
-  border-radius: 20px;
 }
 
 .row-clickable:hover {
@@ -90,12 +87,15 @@ h5 {
   color: black !important;
   height: 100%;
   margin: 0 !important;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+.active-link {
+  background: orangered;
+  color: white !important;
 }
 .top-nav a:hover,
 .top-nav li:hover {
-  background: orangered;
-  color: white !important;
+  color: orangered !important;
 }
 
 .navbar-brand {
@@ -104,3 +104,15 @@ h5 {
   font-size: 2.5vmin;
   text-transform: uppercase;
 }
+
+input,select,textarea {
+  background:#e3121205 !important;
+}
+
+.text-orange {
+  color: orangered !important;
+}
+.bg-orange {
+  background: orangered !important;
+}
+
