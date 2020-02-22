@@ -5,6 +5,7 @@ import Axios from "axios";
 
 class App extends React.Component {
   componentWillMount() {
+    
     this.loadLocales();
   }
 

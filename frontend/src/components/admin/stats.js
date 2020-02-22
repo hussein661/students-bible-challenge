@@ -5,7 +5,7 @@ import request from "../../utils/request";
 const fields = [
   {
     name: "name",
-    displayName: "name",
+    displayName: "Name",
     inputFilterable: true,
     exactFilterable: true,
     sortable: true
@@ -48,8 +48,9 @@ export default class extends Component {
     return (
       <div>
         <FilterableTable
-          namespace="People"
-          initialSort="name"
+          namespace="People desc"
+          initialSort="score"
+          initialSortDir={false}
           data={this.state.users}
           fields={fields}
           noRecordsMessage="There are no people to display"

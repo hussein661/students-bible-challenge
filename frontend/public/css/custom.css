@@ -76,17 +76,17 @@ h5 {
 
 .top-nav {
   border-bottom: 2px solid orangered;
-  border-top: 2px solid orangered;
+  box-shadow: 1px 1px 1px #ccc;
   padding: 0px;
 }
 .top-nav li,
 .top-nav a {
-  font-size: 21px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 400;
   border-radius: 25px !important;
   color: black !important;
   height: 100%;
-  margin: 0 !important;
+  margin: 2px 7px;
   text-decoration: none !important;
 }
 .active-link {
@@ -116,3 +116,8 @@ input,select,textarea {
   background: orangered !important;
 }
 
+
+/* removables */
+.pagination,.clear-filter {
+  display: none !important;
+}

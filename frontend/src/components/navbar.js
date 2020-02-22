@@ -78,7 +78,7 @@ class Navbar extends Component {
               <li className="nav-item">
                 <Link to="/my_answers">
                   <a className="nav-link" href="#">
-                    {intl.get("MY_ANSWERS")}
+                    {intl.get("MY_ANSWERS") || "My answers"}
                   </a>
                 </Link>
               </li>

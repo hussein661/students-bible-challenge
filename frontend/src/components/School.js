@@ -17,7 +17,9 @@ class School extends Component {
   componentDidMount() {
     request("get", "/getAllSchools").then(res => {
       this.setState({ schools: res.data.schools });
-    });
+    }).catch(err=>{
+      console.log(err)
+    })
   }
 
   removeSchool(id) {

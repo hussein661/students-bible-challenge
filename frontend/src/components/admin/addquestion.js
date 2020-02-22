@@ -8,19 +8,19 @@ class addquestion extends Component {
       answers: [
         {
           answerText: "",
-          answerScore: 0
+          answerScore: null
         },
         {
           answerText: "",
-          answerScore: 0
+          answerScore: null
         },
         {
           answerText: "",
-          answerScore: 0
+          answerScore: null
         },
         {
           answerText: "",
-          answerScore: 0
+          answerScore: null
         }
       ]
     },
@@ -45,6 +45,25 @@ class addquestion extends Component {
   submitQuestion = e => {
     this.setState({ message: "" });
     const { question } = this.state;
+    let valid = true
+    if(!question.questionText){
+      return this.setState({message:"You didnt enter the question !!"})
+    }
+    this.state.question.answers.map(answer=>{
+      if((isNaN(parseInt(answer.answerScore)))){
+        this.setState({message:"Invalid score number !!"})
+        valid = false
+     }
+      if(!answer.answerText){
+        this.setState({message:"It seeems you have missed some answer text !!"})
+        valid = false
+      }
+
+      return valid
+    })
+    if(!valid){
+      return
+    }
     const url = "/question/addNew";
     request("post", url, { ...question })
       .then(r => {
@@ -60,6 +79,7 @@ class addquestion extends Component {
       })
       .catch(e => {
         console.log({ e });
+        this.setState({message:"Please fill all the field to submit your answer"})
         return this.setState({ message: e.message });
       });
   };

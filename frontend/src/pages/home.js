@@ -175,9 +175,9 @@ class Home extends Component {
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">{this.state.name}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{intl.get("LEVEL") || "Level"}: beginner</h6>
+                {/* <h6 class="card-subtitle mb-2 text-muted">{intl.get("LEVEL") || "Level"}: beginner</h6> */}
                 <p class="card-text text-orange">{intl.get("ANSWERED_QUESTIONS")} : {this.state.answersCount}{" "}
-                  out of {this.state.questionsCount}</p>
+                  {intl.get("OUT_OF") || "out of"} {this.state.questionsCount}</p>
                 {/* <span>you have questions you didnt answer yet</span> */}
                 {/* <p>School : {this.state.user.school_id.name}</p> */}
                 {/* <a href="#" class="card-link">Card link</a>

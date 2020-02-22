@@ -24,14 +24,9 @@ class Login extends Component {
         email,
         password
       })
-        .then(r => {
-          console.log(r
-            )
+        .then(r => {  
           localStorage.setItem("API_TOKEN", r.data.token);
-          setTimeout(() => {
-            this.state.loading = false
-            this.props.history.push("/");
-          }, 200);
+          this.props.history.push("/");
         })
         .catch(e => {
           this.setState({
@@ -76,7 +71,7 @@ class Login extends Component {
 
               <div>
                 <button type="submit" className="btn btn-primary">
-                  sign in
+                 {intl.get("SIGN_IN") || 'Sign in'}
                 </button>
               </div>
               <div>

@@ -8,6 +8,10 @@ import Register from "./pages/register";
 import MyAnswers from "./pages/myAnswers";
 import AllQuestions from "./pages/allQuestions";
 import Question from "./pages/Question";
+import VQuestion from "./components/admin/VQuestion.js";
+
+
+
 
 const isLoggedIn = () => {
   const token = localStorage.getItem("API_TOKEN");
@@ -46,9 +50,11 @@ const Routes = () => {
         <MyRoute exact path="/" component={Home} />
         <MyRoute exact path="/my_answers" component={MyAnswers} />
         <MyRoute exact path="/admin" component={Admin} admin />
+        <MyRoute exact path="/VQuestion/:question_id" component={VQuestion} admin />
+
         <MyRoute exact path="/questions" component={AllQuestions} />
         <MyRoute exact path="/question/:question_id" component={Question} />
-
+        
         <MyRoute exact path="/Login" component={Login} publicRoute />
         <MyRoute exact path="/Register" component={Register} publicRoute />
       </Switch>

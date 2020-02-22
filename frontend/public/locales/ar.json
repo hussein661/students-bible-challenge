@@ -19,5 +19,17 @@
   "LOGIN": "تسجيل الدخول",
   "LOGIN_TO_CONTINUE": "سجل الدخول للمتابعة",
   "CREATE_NEW_ACCOUNT": "انشاء حساب جديد",
-  "ANSWERED_QUESTIONS":"d"
+  "ANSWERED_QUESTIONS":"الاسئلة المجاب عليها‌",
+  "SIGN_IN":"تسجيل الدخول",
+  "OUT_OF":"من اصل",
+  "MY_ANSWERS":"اجاباتي السابقة",
+  "FULL_NAME":"الاسم الكامل",
+  "EMAIL":"البريد الاكتروني",
+  "CONFIRM":"تاكيد كلمة المرور",
+  "SCHOOL":"اسم المدرسة",
+  "PASSWORD":"كلمة المرور",
+  "CREATE_MY_ACCOUNT":"انشاء حسابي",
+  "ALREADY_HAVE_ACCOUNT":  "لدي حساب"
+
+
 }
