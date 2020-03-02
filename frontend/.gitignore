@@ -5,7 +5,10 @@
 /.pnp
 .pnp.js
 ./variables.js
+./package.json
 /src/variables.js
+./src/variables.js
+
 
 
 # testing
