@@ -38,11 +38,15 @@ class Question extends Component {
             });
           })
           .catch(e => {
-            this.setState({ message: e.message });
+            if (e.message) {
+              this.setState({ message: e.message });
+            }
           });
       })
       .catch(e => {
-        this.setState({ message: e.message });
+        if (e.message) {
+          this.setState({ message: e.message });
+        }
       });
   }
 
@@ -66,7 +70,9 @@ class Question extends Component {
         });
       })
       .catch(e => {
-        this.setState({ message: e.message });
+        if (e.message) {
+          this.setState({ message: e.message });
+        }
       });
   };
 

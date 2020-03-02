@@ -3,9 +3,15 @@ const multer = require("multer");
 const sharp = require("sharp");
 const User = require("../models/User");
 const UserAnswer = require("../models/UserAnswer");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 const auth = require("../middleware/auth");
-const { sendWelcomeEmail, sendCancelationEmail } = require("../emails/account");
+const {
+  sendWelcomeEmail,
+  sendCancelationEmail,
+  sendResetLink
+} = require("../emails/account");
 const router = new express.Router();
 
 router.post("/users/register", async (req, res) => {
@@ -163,6 +169,44 @@ router.get("/users", async (req, res) => {
     res.send(users);
   } catch (e) {
     res.status(404).send();
+  }
+});
+
+router.post("/forgotpassword", async (req, res) => {
+  try {
+    const email = req.body.email;
+    const url = req.body.url;
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      const resetToken = await jwt.sign({ email }, "cxjhczjxkzx", {
+        expiresIn: "1h"
+      });
+      console.log({ resetToken });
+      const link = url.host + "/resetPassword/" + resetToken;
+      sendResetLink(email, link);
+      return res.send({ resetToken });
+    }
+    return res.send({ message: "user not found" });
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});
+
+router.post("/resetPassword/:resetToken", async (req, res) => {
+  try {
+    const resetToken = req.params.resetToken;
+    const password = req.body.password;
+    const email = jwt.decode(resetToken).email;
+    const user = await User.findOne({ email });
+    if (user) {
+      const hashed = await bcrypt.hash(password, 8);
+      console.log(hashed);
+      await User.findOneAndUpdate({ email }, { password: hashed });
+      return res.send({ user });
+    }
+    return res.send({ message: "user not found" });
+  } catch (e) {
+    res.status(500).send(e.message);
   }
 });
 

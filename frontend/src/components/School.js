@@ -7,19 +7,23 @@ class School extends Component {
     schools: []
   };
   submit = () => {
-    request("post", "/addSchool", { name: this.state.name }).then(res => {
-      this.setState({
-        schools: [...this.state.schools, { id: "", name: this.state.name }]
+    if (this.state.name.length) {
+      request("post", "/addSchool", { name: this.state.name }).then(res => {
+        this.setState({
+          schools: [...this.state.schools, { id: "", name: this.state.name }]
+        });
+        this.setState({ name: "" });
       });
-      this.setState({ name: "" });
-    });
+    }
   };
   componentDidMount() {
-    request("get", "/getAllSchools").then(res => {
-      this.setState({ schools: res.data.schools });
-    }).catch(err=>{
-      console.log(err)
-    })
+    request("get", "/getAllSchools")
+      .then(res => {
+        this.setState({ schools: res.data.schools });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   removeSchool(id) {

@@ -18,15 +18,16 @@ class Login extends Component {
     this.state.loading = true;
     e.preventDefault();
     this.state.errorMessage = null;
-    const { email, password } = this.state;
-    if (email.length && password.length) {
-      request("post", "/users/login", {
+    const { email } = this.state;
+    if (email.length) {
+      request("post", "/forgotpassword", {
         email,
-        password
+        url: window.location
       })
         .then(r => {
-          localStorage.setItem("API_TOKEN", r.data.token);
-          this.props.history.push("/");
+          this.setState({
+            errorMessage: "email successfully sent"
+          });
         })
         .catch(e => {
           this.setState({
@@ -47,7 +48,7 @@ class Login extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 form-container">
-            <h1>{intl.get("LOGIN_TO_CONTINUE")}</h1>
+            <h1>{intl.get("FORGOT_PASSWORd") || "forgot password"}</h1>
             <form onSubmit={this.onSubmit}>
               {this.error()}
               <div className="form-group">
@@ -59,31 +60,15 @@ class Login extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                />
-              </div>
 
               <div>
                 <button type="submit" className="btn btn-primary">
-                  {intl.get("SIGN_IN") || "Sign in"}
+                  {intl.get("SEND") || "Send"}
                 </button>
               </div>
               <div>
-                <Link to="/register">
-                  <a href="#">{intl.get("CREATE_NEW_ACCOUNT")}</a>
-                </Link>
-              </div>
-              <div>
                 <Link to="/forgotpassword">
-                  <a href="#">
-                    {intl.get("Forgot_password") || "forgot password"}
-                  </a>
+                  {intl.get("CREATE_NEW_ACCOUNT") || "forgot password"}
                 </Link>
               </div>
             </form>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import request from "../utils/request";
-import Feedback from '../components/feedback.js'
-import intl from 'react-intl-universal'
+import Feedback from "../components/feedback.js";
+import intl from "react-intl-universal";
 class Register extends Component {
   state = {
     user: {
@@ -41,9 +41,9 @@ class Register extends Component {
   getSchools() {
     request("get", "/getAllSchools").then(res => {
       this.setState({ schools: res.data.schools });
-      const user = {...this.state.user}
-      user.school_id = res.data.schools[0]._id
-      this.setState({user})
+      const user = { ...this.state.user };
+      user.school_id = res.data.schools[0]._id;
+      this.setState({ user });
     });
   }
 
@@ -53,15 +53,17 @@ class Register extends Component {
       user: { ...this.state.user }
     })
       .then(r => {
-        if(r.response){
-          this.setState({error:"Email or password is not valid"})
-          return console.log(r.response)
+        if (r.response) {
+          this.setState({ error: "Email or password is not valid" });
+          return console.log(r.response);
         }
         localStorage.setItem("API_TOKEN", r.data.token);
         this.props.history.push("/");
       })
       .catch(e => {
-        console.log(e.message)
+        if (e.message) {
+          console.log(e.message);
+        }
       });
   };
 
@@ -72,9 +74,10 @@ class Register extends Component {
           <Feedback message={this.state.error} />
           <div className="col-md-6 form-container">
             <form onSubmit={this.createUser}>
-              <label className="form-label">{intl.get("FULL_NAME") || "Full name"}</label>
+              <label className="form-label">
+                {intl.get("FULL_NAME") || "Full name"}
+              </label>
               <div className="form-group">
-
                 <input
                   placeholder="Full Name"
                   type="name"
@@ -83,7 +86,9 @@ class Register extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <label className="form-label">{intl.get("EMAIL") || "Email"}</label>
+              <label className="form-label">
+                {intl.get("EMAIL") || "Email"}
+              </label>
 
               <div className="form-group">
                 <input
@@ -94,7 +99,9 @@ class Register extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <label className="form-label">{intl.get("PASSWORD") || "Password"}</label>
+              <label className="form-label">
+                {intl.get("PASSWORD") || "Password"}
+              </label>
 
               <div className="form-group">
                 <input
@@ -106,9 +113,10 @@ class Register extends Component {
                 />
               </div>
 
-              <label className="form-label">{intl.get("CONFIRM") || "Confirm password"}</label>
+              <label className="form-label">
+                {intl.get("CONFIRM") || "Confirm password"}
+              </label>
               <div className="form-group">
-
                 <input
                   placeholder="Confirm password"
                   type="password"
@@ -117,10 +125,12 @@ class Register extends Component {
                   name="confirm_password"
                 />
               </div>
-                <label className="form-label">{intl.get("SCHOOL") || "School"}</label>
+              <label className="form-label">
+                {intl.get("SCHOOL") || "School"}
+              </label>
               <div className="form-group">
                 <select
-                 style={{borderRadius:"20px"}}
+                  style={{ borderRadius: "20px" }}
                   className="form-control rounded-select"
                   name="school_id"
                   value={this.state.user.school_id}
@@ -154,12 +164,15 @@ class Register extends Component {
                 </div> */}
                 <div>
                   <button type="submit" className="btn btn-primary">
-                   {intl.get("CREATE_MY_ACCOUNT") || "Create my account"} 
+                    {intl.get("CREATE_MY_ACCOUNT") || "Create my account"}
                   </button>
                 </div>
                 <div>
                   <Link to="/login">
-                    <a href="#">{intl.get("ALREADY_HAVE_ACCOUNT") || "Already have account"}</a>
+                    <a href="#">
+                      {intl.get("ALREADY_HAVE_ACCOUNT") ||
+                        "Already have account"}
+                    </a>
                   </Link>
                 </div>
               </div>

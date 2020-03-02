@@ -1,7 +1,7 @@
 {
   "BIBLE_COMPETITION": "The Bible Competition",
   "MY_PROFILE": "My profile",
-  "LATEST_QUESTION": "Latest question",
+  "LATEST_QUESTION": "Today's question",
   "MY_'ANSWERS": "My answers",
   "SEE_OLD_QUESTIONS": "Old questions",
   "LOGOUT": "Logout",
@@ -20,5 +20,5 @@
   "LOGIN": "Login",
   "LOGIN_TO_CONTINUE": "Login to continue",
   "CREATE_NEW_ACCOUNT": "Create new account",
-  "ANSWERED_QUESTIONS":"Answered Questions"
+  "ANSWERED_QUESTIONS": "Answered Questions"
 }

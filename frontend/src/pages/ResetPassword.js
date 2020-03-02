@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import intl from "react-intl-universal";
-import { Link } from "react-router-dom";
 import request from "../utils/request";
 import Feedback from "../components/feedback";
 class Login extends Component {
   state = {
-    email: "",
     password: "",
     errorMessage: ""
   };
@@ -18,15 +16,16 @@ class Login extends Component {
     this.state.loading = true;
     e.preventDefault();
     this.state.errorMessage = null;
-    const { email, password } = this.state;
-    if (email.length && password.length) {
-      request("post", "/users/login", {
-        email,
+    const { password } = this.state;
+    const resetToken = this.props.params.resetToken;
+    if (password.length) {
+      request("post", "/resetPassword/" + resetToken, {
         password
       })
         .then(r => {
-          localStorage.setItem("API_TOKEN", r.data.token);
-          this.props.history.push("/");
+          this.setState({
+            errorMessage: "password successfully changed"
+          });
         })
         .catch(e => {
           this.setState({
@@ -47,44 +46,32 @@ class Login extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 form-container">
-            <h1>{intl.get("LOGIN_TO_CONTINUE")}</h1>
+            <h1>{intl.get("FORGOT_PASSWORd") || "reset password"}</h1>
             <form onSubmit={this.onSubmit}>
               {this.error()}
               <div className="form-group">
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="form-control"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <input
                   type="password"
-                  className="form-control"
                   name="password"
-                  placeholder="Password"
+                  placeholder="new pasword"
+                  className="form-control"
                   onChange={this.handleChange}
                 />
               </div>
 
               <div>
-                <button type="submit" className="btn btn-primary">
-                  {intl.get("SIGN_IN") || "Sign in"}
-                </button>
-              </div>
-              <div>
-                <Link to="/register">
-                  <a href="#">{intl.get("CREATE_NEW_ACCOUNT")}</a>
-                </Link>
-              </div>
-              <div>
-                <Link to="/forgotpassword">
-                  <a href="#">
-                    {intl.get("Forgot_password") || "forgot password"}
-                  </a>
-                </Link>
+                {this.state.errorMessage === "password successfully changed" ? (
+                  <button
+                    type="button"
+                    onClick={() => this.props.history.push("/login")}
+                  >
+                    back to login
+                  </button>
+                ) : (
+                  <button type="submit" className="btn btn-primary">
+                    {intl.get("SEND") || "change my password"}
+                  </button>
+                )}
               </div>
             </form>
           </div>
