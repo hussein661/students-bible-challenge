@@ -2,7 +2,6 @@ import Axios from "axios";
 
 import { API_URL } from "../variables";
 
-
 const request = (type, url, body) => {
   const API_TOKEN = localStorage.getItem("API_TOKEN");
   Axios.defaults.headers.common["Authorization"] = API_TOKEN;
@@ -11,7 +10,7 @@ const request = (type, url, body) => {
   Axios.defaults.headers.common["Access-Control-Allow-Credentials"] = true;
   Axios.defaults.headers.common["Access-Control-Allow-Origin"] = true;
 
-  console.log(type,url)
+  console.log(type, url);
   return Axios({
     method: type,
     url: API_URL + url,
@@ -20,7 +19,7 @@ const request = (type, url, body) => {
     }
   })
     .then(r => {
-      if(r.data){
+      if (r.data) {
         return r;
       }
     })

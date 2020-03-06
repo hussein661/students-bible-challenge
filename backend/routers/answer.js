@@ -10,15 +10,18 @@ router.get("/myanswers", auth, async (req, res) => {
     const answers = await UserAnswer.find({ user_id: req.user.id })
       .populate("question_id")
       .populate("answer_id");
-
     const myanswers = [];
+    console.log(answers);
     answers.map(answer => {
-      myanswers.push({
-        question: answer.question_id.questionText,
-        answer: answer.answer_id.answerText,
-        date: answer.createdAt
-      });
+      if (answer.question_id) {
+        myanswers.push({
+          question: answer.question_id.questionText,
+          answer: answer.answer_id.answerText,
+          date: answer.createdAt
+        });
+      }
     });
+    console.log({ myanswers, user: req.user });
     res.send({ myanswers });
   } catch (e) {
     res.status(400).json({ error: e.message });

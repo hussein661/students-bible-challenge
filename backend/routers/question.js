@@ -186,16 +186,11 @@ router.patch("/question/:id", auth, async (req, res) => {
   }
 });
 
-router.delete("/question/:id", auth, async (req, res) => {
+router.post("/deleteQuestion/:id", auth, async (req, res) => {
   try {
     const question = await Question.findOneAndDelete({
-      _id: req.params.id,
-      owner: req.user._id
+      _id: req.params.id
     });
-
-    if (!question) {
-      res.status(404).send();
-    }
 
     res.send(question);
   } catch (e) {

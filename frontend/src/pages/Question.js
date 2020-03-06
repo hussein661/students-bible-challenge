@@ -39,13 +39,13 @@ class Question extends Component {
           })
           .catch(e => {
             if (e.message) {
-              this.setState({ message: e.message });
+              // this.setState({ message: e.message });
             }
           });
       })
       .catch(e => {
         if (e.message) {
-          this.setState({ message: e.message });
+          // this.setState({ message: e.message });
         }
       });
   }
