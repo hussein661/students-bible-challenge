@@ -162,10 +162,18 @@ router.get("/users/:id/avatar", async (req, res) => {
   }
 });
 
+router.get("/user/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).poulate("school_id");
+
+    res.send(user);
+  } catch (e) {
+    res.status(404).send();
+  }
+});
 router.get("/users", async (req, res) => {
   try {
-    const users = await User.find();
-
+    const users = await User.find().populate("school_id");
     res.send(users);
   } catch (e) {
     res.status(404).send();

@@ -275,7 +275,6 @@ input[type="text"]:placeholder {
   width: 60%;
 }
 
-
 .test > .title {
   text-decoration: underline;
 }
@@ -392,4 +391,12 @@ input[type="text"]:placeholder {
 .form-container {
   margin: 0 auto;
   /* border: 2px solid black; */
+}
+
+.profile-card {
+  cursor: pointer;
+}
+.profile-card:hover {
+  transition: 0.1s;
+  background-color: #39ace7;
 }

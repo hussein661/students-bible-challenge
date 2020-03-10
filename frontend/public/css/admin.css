@@ -56,12 +56,26 @@ body {
 }
 
 .container form {
-  border: 2px solid
-  orangered;
-  
+  border: 2px solid orangered;
+
   padding: 40px;
-  
+
   border-radius: 10px;
   background: #0c2cd50f;
-  box-shadow: 1px 1px 1px
-  gray;}
+  box-shadow: 1px 1px 1px gray;
+}
+
+.admin {
+  background-color: red;
+  /* border-radius: 2px; */
+  padding: 0;
+  color: white !important;
+  font-weight: 500;
+}
+.admin a {
+  color: white !important;
+}
+.admin a:hover {
+  color: white !important;
+  /* border: 2px solid red !important; */
+}

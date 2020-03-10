@@ -5,8 +5,8 @@ import intl from "react-intl-universal";
 
 class Home extends Component {
   state = {
-    name:'',
-    loading:true,
+    name: "",
+    loading: true,
     user: { name: "", school_id: { name: "" } },
     question: {
       question: {},
@@ -46,7 +46,7 @@ class Home extends Component {
             });
           })
           .catch(e => {
-            this.setState({ message: e.message });
+            this.setState({ message: "Pick an answer for this question" });
           });
       })
       .catch(e => {
@@ -55,12 +55,14 @@ class Home extends Component {
   }
 
   getUser = () => {
-    request("get", "/users/me").then(r => {
-      this.setState({ user: r.data,loading:false,name:r.data.name })
-    }).catch(err=>{
-      this.setState({loading:false})
-      console.log(err)
-    })
+    request("get", "/users/me")
+      .then(r => {
+        this.setState({ user: r.data, loading: false, name: r.data.name });
+      })
+      .catch(err => {
+        this.setState({ loading: false });
+        console.log(err);
+      });
   };
 
   handleSelectAnswer = (event, selectedAnswerId, answerScore) => {
@@ -132,7 +134,7 @@ class Home extends Component {
                     for={answer.answerText}
                     style={{
                       background: isAnswerSelected ? "green" : "",
-                      color: isAnswerSelected ? "green" : ""
+                      color: isAnswerSelected ? "white" : ""
                     }}
                   >
                     <span className="glyphicon glyphicon-ok"></span>
@@ -161,29 +163,32 @@ class Home extends Component {
   };
 
   render() {
-    if(this.state.loading){
-      return <h1>loading...</h1>
+    if (this.state.loading) {
+      return <h1>loading...</h1>;
     }
     return (
       <div>
         <div className="container">
           <div className="grid">
             <div className="left-side">
-              <div className="header-2">
-      
-              </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{this.state.name}</h5>
-                {/* <h6 class="card-subtitle mb-2 text-muted">{intl.get("LEVEL") || "Level"}: beginner</h6> */}
-                <p class="card-text text-orange">{intl.get("ANSWERED_QUESTIONS")} : {this.state.answersCount}{" "}
-                  {intl.get("OUT_OF") || "out of"} {this.state.questionsCount}</p>
-                {/* <span>you have questions you didnt answer yet</span> */}
-                {/* <p>School : {this.state.user.school_id.name}</p> */}
-                {/* <a href="#" class="card-link">Card link</a>
+              <div className="header-2"></div>
+              <div
+                class="card profile-card"
+                onClick={() => this.props.history.push("/me")}
+              >
+                <div class="card-body">
+                  <h5 class="card-title">{this.state.name}</h5>
+                  {/* <h6 class="card-subtitle mb-2 text-muted">{intl.get("LEVEL") || "Level"}: beginner</h6> */}
+                  <p class="card-text text-orange">
+                    {intl.get("ANSWERED_QUESTIONS")} : {this.state.answersCount}{" "}
+                    {intl.get("OUT_OF") || "out of"} {this.state.questionsCount}
+                  </p>
+                  {/* <span>you have questions you didnt answer yet</span> */}
+                  {/* <p>School : {this.state.user.school_id.name}</p> */}
+                  {/* <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a> */}
+                </div>
               </div>
-            </div>
             </div>
 
             <div className="content test">

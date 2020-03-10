@@ -11,6 +11,8 @@ import Question from "./pages/Question";
 import VQuestion from "./components/admin/VQuestion.js";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import Me from "./pages/Me";
+import VUser from "./components/admin/VUser";
 
 const isLoggedIn = () => {
   const token = localStorage.getItem("API_TOKEN");
@@ -55,6 +57,8 @@ const Routes = () => {
           component={VQuestion}
           admin
         />
+
+        <MyRoute exact path="/users/:id" component={VUser} admin />
         <MyRoute
           exact
           path="/ForgotPassword"
@@ -69,8 +73,9 @@ const Routes = () => {
         />
 
         <MyRoute exact path="/questions" component={AllQuestions} />
-        <MyRoute exact path="/question/:question_id" component={Question} />
+        <MyRoute exact path="/me" component={Me} />
 
+        <MyRoute exact path="/question/:question_id" component={Question} />
         <MyRoute exact path="/Login" component={Login} publicRoute />
         <MyRoute exact path="/Register" component={Register} publicRoute />
       </Switch>

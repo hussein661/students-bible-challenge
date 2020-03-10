@@ -1,13 +1,30 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import intl from "react-intl-universal";
+import request from "../utils/request";
 
 class Navbar extends Component {
+  state = {
+    isAdmin: false
+  };
   logout = e => {
     const lang = localStorage.getItem("lang");
     localStorage.clear();
     localStorage.setItem("lang", lang);
   };
+  checkIfAdmin() {
+    request("get", "/isAdmin")
+      .then(res => {
+        if (res.data.isAdmin) {
+          this.setState({ isAdmin: true });
+        }
+      })
+      .catch(e => console.log(e));
+  }
+
+  componentDidMount() {
+    this.checkIfAdmin();
+  }
   changeLanguage(e) {
     localStorage.setItem("lang", e.target.value);
     window.location.reload();
@@ -90,6 +107,19 @@ class Navbar extends Component {
                   </a>
                 </Link>
               </li>
+              {this.state.isAdmin ? (
+                <li
+                  className="nav-item admin"
+                  onClick={() => this.props.history.push("/admin")}
+                >
+                  <a className="nav-link" href="#">
+                    ADMIN
+                    <span className="sr-only">(current)</span>
+                  </a>
+                </li>
+              ) : (
+                ""
+              )}
               {this.log()}
               <div className="form-group">
                 <select
@@ -123,4 +153,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

@@ -109,7 +109,8 @@ class Question extends Component {
                   <label
                     for={answer.answerText}
                     style={{
-                      background: isAnswerSelected ? "green" : ""
+                      background: isAnswerSelected ? "green" : "",
+                      color: isAnswerSelected ? "white" : ""
                     }}
                   >
                     <span className="glyphicon glyphicon-ok"></span>

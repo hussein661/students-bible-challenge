@@ -18,7 +18,7 @@ const fields = [
     sortable: true
   },
   {
-    name: "school",
+    name: "school_id.name",
     displayName: "School",
     inputFilterable: true,
     exactFilterable: true,
@@ -40,7 +40,7 @@ export default class extends Component {
   componentDidMount() {
     request("get", "/users").then(r => {
       console.log(r.data);
-      this.setState({ users: r.data });
+      this.setState({ users: r.data.filter(user => !user.isAdmin) });
     });
   }
 

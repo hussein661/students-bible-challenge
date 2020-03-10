@@ -36,7 +36,7 @@ class VQuestion extends Component {
     request("post", "/deleteQuestion/" + question_id)
       .then(res => {
         console.log(res);
-        // this.props.history.push('/admin')
+        this.props.history.goBack();
       })
       .catch(err => {
         this.setState({ message: "Something went wrong" });
